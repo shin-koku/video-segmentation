@@ -5,7 +5,7 @@ from torch.autograd import Variable
 import math
 from functools import partial
 
-__all__ = ['ResNeXt', 'resnet50', 'resnet101']
+__all__ = ['ResNeXt', 'resnet50', 'resnet101','resnet152']
 
 
 def downsample_basic_block(x, planes, stride):
@@ -74,8 +74,6 @@ class ResNeXt(nn.Module):
     def __init__(self,
                  block,
                  layers,
-                 sample_size,
-                 sample_duration,
                  shortcut_type='B',
                  cardinality=32,
                  num_classes=400):
