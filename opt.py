@@ -30,4 +30,13 @@ def opt():
 
     parser.add_argument('--no_validation', action='store_false',type=bool,help ='validation or not')
 
+    parser.add_argument("--hidden_size" , type=int , default=512 , help="hidden_size for LSTM" )
+
+    parser.add_argument("--num_layers" , type = int , default=4 ,help="depth for every LSTMcell")
+
+    parser.add_argument("--bi" ,type=bool,action="store_true" ,default=False, help="whether to use a bi-directional LSTM")
+
+    parser.add_argument("--time_steps" , type=int ,action='append',default=[16,8,4,2] , help="the timesteps for each time sclae ,the order of the list should be given by the form of[scale2,sclae4,scale,8,scale,16],the timesteps should"
+                                                                                             "be logistically declining noticeably")
+
     return parser.parse_args()

@@ -1,23 +1,15 @@
 import torch
 import torch.nn as nn
 import enum
+import math
 
-__all__ = {'scale_4_block','scale_8_block','scale_16_block'}
-
-
-
-def scale_4_block(in_size,cardinality):
-    return block_builder(4,1,in_size,cardinality)
+__all__ = {'scale_block'}
 
 
 
-def scale_8_block(in_size,cardinality):
-    return block_builder(8,2,in_size,cardinality)
+def scale_block(scale,in_size,cardinality):
+    return block_builder(scale,int(math.log2(scale))-1,in_size,cardinality)
 
-
-
-def scale_16_block(in_size,cardinality):
-    return block_builder(16,3,in_size,cardinality)
 
 
 def block_builder(scale,num,in_size,cardinality):
